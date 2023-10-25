@@ -7,22 +7,26 @@ Sliding window
 def slidingWindow(arr, target):
 
     start = 0
-    end = 1
+    end = 0
     currSum = arr[0]
 
     while start <= end and end < len(arr):
 
+        print(currSum)
         if currSum == target:
-            return [start, end-1]
-
+            print(currSum, target, start, end)
+            return arr[start:end+1]
+        
         elif currSum < target:
-            end += 1
-            currSum += arr[end]
+            if end < len(arr):
+                end += 1
+                currSum += arr[end]
+            else:
+                return [-1, -1]
 
         else:
             currSum -= arr[start]
             start += 1
-            
 
     return [-1, -1]
 
