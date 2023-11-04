@@ -1,45 +1,35 @@
-def replaceEvenWithTwoOfSame(arr):
+def replaceArrayOddEven(arr):
 
+    # Find the last index of array from where it is not -1
     start = findLastIndex(arr)
     end = len(arr) - 1
 
+
+    # Loop the array in reverse
     while start >= 0:
 
-        # if the elem is even, replace it twice with end index
+        # For even numbers, replace it twice!
         if arr[start] % 2 == 0:
             arr[end] = arr[start]
             end -= 1
             arr[end] = arr[start]
             end -= 1
-        # if elem is odd, replace it just once
+        
         else:
             arr[end] = arr[start]
             end -= 1
-        
+
         start -= 1
-    
+
+
     print(arr)
 
 
-# Finds the last index of array where it is not -1
 def findLastIndex(arr):
-    
+
     for i in range(len(arr)-1, -1, -1):
         if arr[i] != -1:
             return i
+        
 
-
-# arr = [1,2,3,4,5,-1,-1]
-
-# arr = [1]
-
-# arr = [2,2,2,-1,-1,-1]
-
-arr = [1,2,3,4,5,-1,-1]
-
-replaceEvenWithTwoOfSame(arr)
-
-
-
-
-
+replaceArrayOddEven([1,2,5,6,8,-1,-1,-1])

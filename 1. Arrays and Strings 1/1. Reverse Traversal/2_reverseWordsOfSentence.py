@@ -4,28 +4,22 @@
 
 def reverseWordsInSentence(sentence):
 
-    start = len(sentence) - 1
-    end = start + 1
-    newSentence = ''
+    start, end = len(sentence) - 1, len(sentence)
+    newWord = ''
+
     while start >= 0:
 
-        # if there is a space, then add sentence[start+1] till end to a new string
         if sentence[start] == ' ':
-            newSentence += sentence[start+1:end] + ' '
+            newWord += sentence[start+1: end] + ' '
             end = start
-
+        
         start -= 1
 
-    newSentence += sentence[start+1: end] 
+    newWord += sentence[start + 1: end]
 
-    print(newSentence) 
+    print(newWord)
 
-sentence = 'this is beautiful'
-# sentence = 'hello'
-# sentence = 'i'
-# sentence = ''
+sentence = 'i live in a house'
+# sentence = 'robber i'
+
 reverseWordsInSentence(sentence)
-
-
-
-

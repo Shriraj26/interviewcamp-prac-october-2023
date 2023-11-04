@@ -7,26 +7,21 @@ def twoSum(arr, target):
 
     while start <= end:
 
-        currentSum = arr[start] + arr[end]
+        currSum = arr[start] + arr[end]
 
-        # base case if start and end match to the target, return that index
-        if currentSum == target:
-            return [start, end]
-
-        elif currentSum < target:
+        if currSum == target:
+            return [arr[start], arr[end]]
+        
+        elif currSum < target:
             start += 1
 
-        elif currentSum > target:
+        else:
             end -= 1
 
     return [-1, -1]
 
-arr = [1,3,6,19,22]
-target = 0
+arr = [1,2,3,4,5]
+target = 9
 
 print(twoSum(arr, target))
-
-
-
-
 

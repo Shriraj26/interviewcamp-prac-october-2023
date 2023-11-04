@@ -1,30 +1,27 @@
 import sys
 
 def findMin(arr):
-    minNum = sys.maxsize
+    minElem = sys.maxsize
     for elem in arr:
-        if elem < minNum:
-            minNum = elem
+        minElem = min(minElem, elem)
 
-    return minNum
+    return minElem    
+
+    
 
 def findMax(arr):
-
-    maxNum = - sys.maxsize
+    maxElem = - sys.maxsize
     for elem in arr:
-        if elem > maxNum:
-            maxNum = elem
-
-    return maxNum
-
+        maxElem = max(maxElem, elem)
+    
+    return maxElem
+    
 
 def findBump(arr):
 
     for i in range(len(arr)-1, 0, -1):
         if arr[i] < arr[i-1]:
             return i
-    
-
 
 def findDip(arr):
 
@@ -35,28 +32,32 @@ def findDip(arr):
 
 def findSubArrToMakeEntireArrSorted(arr):
 
-    bump = findBump(arr)
+    # Find the first dip from start
     dip = findDip(arr)
 
+    # Find the first bump from end
+    bump = findBump(arr)
 
-    minNum = findMin(arr[dip: bump+1])
-    maxNum = findMax(arr[dip: bump+1])
+    # Find min and max in the subarray dip to start
+    minElem = findMin(arr[dip: bump + 1])
+    maxElem = findMax(arr[dip: bump + 1])
     
-    
-    end = -1
-    for i in range(bump, len(arr)-1):
-        if arr[i+1] > maxNum:
-            end = i
-            break
-            
+    start = 0
+    end = 0
 
+    # Go left to include elements greater than the min 
     for i in range(dip, -1, -1):
-        if arr[i-1] < minNum:
-            print(arr[i-1], minNum)
-            start = i
+        if arr[i] < minElem:
+            start = i+1
             break
 
-    print(arr[start: end+1])
+    # Go right to incluse elements less than the max
+    for i in range(bump, len(arr)):
+        if arr[i] > maxElem:
+            end = i - 1
+            break
 
+    print(arr[start: end + 1])
 
+    
 findSubArrToMakeEntireArrSorted([1,2,4,5,3,7,5,6,8])

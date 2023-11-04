@@ -5,29 +5,19 @@ def sortedSquares(arr):
 
     start = 0
     end = len(arr) - 1
-    result = [0 for i in range(len(arr))]
-    resultEndIndex = len(result) - 1
+    newArr = []
 
     while start <= end:
 
-        startSq = arr[start] ** 2
-        endSq = arr[end] ** 2
-        
-        # if the start is greater than end
-        if startSq > endSq:
-            result[resultEndIndex] = startSq
+        if abs(arr[start]) > abs(arr[end]):
+            newArr.append(arr[start] ** 2)
             start += 1
-            
         else:
-            result[resultEndIndex] = endSq
+            newArr.append(arr[end] ** 2)
             end -= 1
 
-        resultEndIndex -= 1
-        print(result)
+    print(newArr[::-1])
 
-    # print(result)
-
-
-arr = [-4, -2, 0, 3, 5]
-
+arr = [-4, -2, -1, 0, 3, 5]
 sortedSquares(arr)
+
