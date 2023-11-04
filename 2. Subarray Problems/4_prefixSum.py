@@ -3,19 +3,21 @@
 
 def prefixSum(arr, k):
 
-    currSum = arr[0]
-    myDict = {0: arr[0]}
+    myDict = {}
+    currSum = 0
 
-    for i in range(1, len(arr)):
+    for i in range(len(arr)):
+
+        currSum += arr[i]
 
         if currSum == k:
-            return arr[0:i]
+            return arr[:i+1]
         
-        if  myDict.get(currSum - k) is not None:
-            return arr[myDict.get(currSum - k) + 1: i ]
+        if myDict.get(currSum - k) is not None:
+
+            return arr[myDict.get(currSum - k) + 1: i+1]
         
-        currSum += arr[i]
-        myDict[currSum] = i
+    return [-1, -1]
 
     
-print(prefixSum([2,4,-2,1,-3,5,-3], 5))
+print(prefixSum([1,2,3], 3))

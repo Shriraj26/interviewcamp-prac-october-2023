@@ -8,15 +8,16 @@ Kadane's Algo has 2 things -
 
 def maxSumPositiveNegative(arr):
 
-    maxSumAtIndex = arr[0]
+    maxSumTillNow = arr[0]
     maxSumEver = arr[0]
 
     for i in range(1, len(arr)):
 
-        maxSumAtIndex = max(maxSumAtIndex + arr[i], arr[i])
-        maxSumEver = max(maxSumEver, maxSumAtIndex)
+        maxSumTillNow = max(maxSumTillNow + arr[i], arr[i])
+        maxSumEver = max(maxSumEver, maxSumTillNow)
     
     return maxSumEver
+    
 
 print(maxSumPositiveNegative([-2, -3, 4, -1, -2, 1, 5, -1]))
 

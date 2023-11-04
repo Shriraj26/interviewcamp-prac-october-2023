@@ -1,0 +1,7 @@
+The time complexity is exponential for the recursive functions.
+
+TC - O(2 ^ n) -- Fibonacci
+Space - Depth of the tree - O(n) -- Fibonacci
+
+
+

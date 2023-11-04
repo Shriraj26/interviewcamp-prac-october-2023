@@ -8,12 +8,15 @@ def longestSubWithUniqueChars(s):
     maxStr = s[start]
     maxLen = 1
 
+    print(s)
     while end < len(s):
 
-        if myDict.get(s[end]) is not None and start <= myDict[s[end]]:
+        print(start, end, maxStr)
+        if myDict.get(s[end]) is not None and start <= myDict.get(s[end]):
             start = myDict[s[end]] + 1
             
         myDict[s[end]] = end
+        print(myDict)
         
         if end - start + 1 > maxLen:
             maxLen = end - start + 1
@@ -23,8 +26,9 @@ def longestSubWithUniqueChars(s):
 
     print(maxStr, maxLen)
 
-    
 
 
 
-print(longestSubWithUniqueChars('whatwhywhere'))
+
+
+print(longestSubWithUniqueChars('abba'))
