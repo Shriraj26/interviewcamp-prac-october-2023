@@ -1,0 +1,6 @@
+Where to use LRU Cache - 
+1. When you need latest thing, and a linked structure where you can delete first and append to last
+2. Questions like smallest subarray covering all the values.
+
+to do -
+Smallest substring withh all the values.
