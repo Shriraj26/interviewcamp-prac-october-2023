@@ -12,15 +12,18 @@ class UnionFind:
     def union(self, x, y):
         rootX = self.find(x)
         rootY = self.find(y)
+        if rootX == rootY:
+            return
 
-        if rootX != rootY:
-            if self.rank[rootX] > self.rank[rootY]:
-                self.root[rootY] = rootX
-            elif self.rank[rootX] < self.rank[rootY]:
-                self.root[rootX] = rootY
-            else:
-                self.root[rootY] = rootX
-                self.rank[rootX] += 1
+        if self.rank[rootX] > self.rank[rootY]:
+            self.root[rootY] = rootX
+        elif self.rank[rootX] < self.rank[rootY]:
+            self.root[rootX] = rootY
+        else:
+            self.root[rootY] = rootX
+            self.rank[rootX] += 1
+
+        self.count += 1
 
     def find(self, x, y):
         if x == self.root[x]:
