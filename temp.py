@@ -1,36 +1,41 @@
-class Solution:
-    def findCircleNum(self, isConnected: List[List[int]]) -> int:
-        pass
+#abbbccda
+import sys
+def longestSubstr(s):
+
+    if len(s) == 0:
+        return [-1,0]
+    start = 0
+    end = 1
+    resLen = 1
+    resIndex = 0
+
+    while end < len(s):
+
+        if s[end] != s[end-1]:
+            if resLen < end - start :
+                resLen = end - start
+                resIndex = start    
+            
+            start = end
+        
+        end += 1
 
 
-class UnionFind:
-    def __init__(self, n):
-        self.root = [i for i in range(n)]
-        self.rank = [1] * n
-        self.count = 0
+    print(resIndex, resLen)
+    
+# longestSubstr('abbbccda')
+# longestSubstr('10000111')
+# longestSubstr('aabbbbbCdAA')
 
-    def union(self, x, y):
-        rootX = self.find(x)
-        rootY = self.find(y)
-        if rootX == rootY:
-            return
 
-        if self.rank[rootX] > self.rank[rootY]:
-            self.root[rootY] = rootX
-        elif self.rank[rootX] < self.rank[rootY]:
-            self.root[rootX] = rootY
-        else:
-            self.root[rootY] = rootX
-            self.rank[rootX] += 1
 
-        self.count += 1
+def tempFunc():
 
-    def find(self, x, y):
-        if x == self.root[x]:
-            return x
+    s = "CODEGE"
+    print("ODG" in s)
 
-        self.root[x] = self.find(self.root[x])
-        return self.root[x]
 
-    def isConnected(self, x, y):
-        return self.find(x) == self.find(y)
+tempFunc()
+
+
+
