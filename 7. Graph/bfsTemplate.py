@@ -1,3 +1,8 @@
+"""
+Here, you will get a path till destination
+and length of path as well...
+"""
+
 from queue import Queue
 
 def shortestPathBFS(g, src, dest):

@@ -1,0 +1,13 @@
+If there are n nodes in a graph, there can be at most n-1 edges from node A to 
+node B. This is due to the fact that the number of vertices will always be greater
+than the number of edges, and also if you add n edges between nodes A and B,
+then you leave one node behind unconnected!!
+
+
+There can be no shortest path in a graph between 2 nodes if there is 
+a negative cycle. IT means that if you keep on adding all the edges
+in a cycle from say NOde A to B, and if you keep on getting negative weights,
+Then the sum of weights will aleays decrease, leading to -ve infinity
+Thus there is no minimum path or shortest path when there is a negative cycle
+in 2 nodes.
+

@@ -8,9 +8,11 @@ def secondSmallesttNum(arr):
         if elem <= first:
             second = first
             first = elem
-        elif first < elem and elem < second:
+        elif first < elem < second:
             second = elem
     return second
 
 print(secondSmallesttNum([1,1,2,3,4,5,6]))
+print(secondSmallesttNum([1,2,3,4,5,6]))
 print(secondSmallesttNum([10, 9, 8, 7]))
+print(secondSmallesttNum([10, 10, 10, 10]))

@@ -1,41 +1,44 @@
-#abbbccda
-import sys
-def longestSubstr(s):
-
-    if len(s) == 0:
-        return [-1,0]
-    start = 0
-    end = 1
-    resLen = 1
-    resIndex = 0
-
-    while end < len(s):
-
-        if s[end] != s[end-1]:
-            if resLen < end - start :
-                resLen = end - start
-                resIndex = start    
-            
-            start = end
-        
-        end += 1
-
-
-    print(resIndex, resLen)
+from queue import Queue
+import collections
+prerequisites = [['user', 'admin'], ['Root', 'root'], ['home2', 'user'], ['home1', 'user'], ['home3', 'home1'], ['home3', 'Root']]
+def topSortTry():
     
-# longestSubstr('abbbccda')
-# longestSubstr('10000111')
-# longestSubstr('aabbbbbCdAA')
+    numCourses = 7
+    inDegree = {}
+    q = Queue()
+    g = {}
+    topSortArr = []
+    myDict = {}
 
+    # Construct a graph and calculate indegrees
+    for dest, src in prerequisites:
+        if src not in g:
+            g[src] = [dest]
+        else:
+            g[src].append(dest)
+        if inDegree.get(src) == None:
+            inDegree[src] = 0
+        inDegree[dest] = inDegree.get(dest, 0) + 1
+    print(inDegree)
+    
+    # Put all the indegrees in queue that have indegree zero
+    for key, val in inDegree.items():
+        if val == 0:
+            q.put(key)
+    
+    # loop queue
+    while q.qsize():
+        currNode = q.get()
+        topSortArr.append(currNode)
+        if currNode in g:
+            for neigh in g[currNode]:
+                inDegree[neigh] -= 1
+                if inDegree[neigh] == 0:
+                    q.put(neigh)
+                    
+    
+    # print(topSortArr)
+    # return at last
+    return topSortArr if len(topSortArr) == numCourses else []
 
-
-def tempFunc():
-
-    s = "CODEGE"
-    print("ODG" in s)
-
-
-tempFunc()
-
-
-
+print(topSortTry())

@@ -1,0 +1,4 @@
+1. see product of array itself self code once again...
+2. Container with most water, Trapping rain water
+3. Longest char replacement
+4. 

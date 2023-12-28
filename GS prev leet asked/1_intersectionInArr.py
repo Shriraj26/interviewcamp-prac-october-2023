@@ -1,26 +1,26 @@
-arr1 = [1,1,2,2,2]
-arr2 = [1,1,2,2]
+arr1 = [1,1,2,3]
+arr2 = [1,1,2,2,3]
 
-def findIntersection(arr1, arr2):
+def findIntersection(nums1, nums2):
 
     myDict = {}
     for elem in nums1:
         if elem in myDict:
             myDict[elem]+= 1
         else:
-            myDict[elem] = 0
+            myDict[elem] = 1
     result = []
     for elem in nums2:
         if elem in myDict:
-            if myDict[elem] > 0:
+            if myDict[elem] >= 1:
                 myDict[elem] -= 1
                 result.append(elem)
-            elif myDict[elem] == 0:
-                del myDict[elem]
-                result.append(elem)
-
+                if myDict[elem] == 0:
+                    del myDict[elem]
+                
+                
     return result
 
 
-def intersectionIfBothArraysSorted(arr1, arr2):
+print(findIntersection(arr1, arr2))
 

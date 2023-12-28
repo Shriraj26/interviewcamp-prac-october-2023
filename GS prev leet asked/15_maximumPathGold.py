@@ -10,7 +10,6 @@ def maxPathGold(arr):
 
     for i in range(m-1, -1, -1):
         for j in range(n):
-
             if i == m-1 and j == 0:
                 continue
             elif i == m-1:
